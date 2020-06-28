@@ -8,6 +8,11 @@ function InputForm(props) {
 	const [value, setValue] = useState("");
 	const inputRef = React.createRef();
 	useEffect(() => inputRef.current.focus());
+	const submit = () => {
+		props.bugAdded(inputRef.current.value);
+		setValue("");
+		inputRef.current.focus();
+	};
 	return (
 		<>
 			<h1 style={{ textAlign: "center" }}>Bug Tracker</h1>
@@ -19,17 +24,14 @@ function InputForm(props) {
 					ref={inputRef}
 					value={value}
 					onChange={(e) => setValue(e.target.value)}
+					onKeyPress={(e) => {
+						if (e.charCode === 13) {
+							submit();
+						}
+					}}
 				/>
 				<InputGroup.Append>
-					<Button
-						onClick={() => {
-							props.bugAdded(inputRef.current.value);
-							setValue("");
-							inputRef.current.focus();
-						}}
-					>
-						{icons.add}
-					</Button>
+					<Button onClick={submit}>{icons.add}</Button>
 				</InputGroup.Append>
 			</InputGroup>
 		</>
