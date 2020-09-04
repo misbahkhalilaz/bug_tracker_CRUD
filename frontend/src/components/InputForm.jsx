@@ -25,13 +25,13 @@ function InputForm(props) {
 					value={value}
 					onChange={(e) => setValue(e.target.value)}
 					onKeyPress={(e) => {
-						if (e.charCode === 13) {
+						if (e.charCode === 13 && value.length > 0 ) {
 							submit();
 						}
 					}}
 				/>
 				<InputGroup.Append>
-					<Button onClick={submit}>{icons.add}</Button>
+					<Button onClick={submit} disabled= {value.length > 0 ? false : true}>{icons.add}</Button>
 				</InputGroup.Append>
 			</InputGroup>
 		</>

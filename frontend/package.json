@@ -12,6 +12,7 @@
   "author": "Misbah Khalil",
   "license": "MIT",
   "dependencies": {
+    "antd": "^4.6.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
